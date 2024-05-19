@@ -1,0 +1,456 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <title>DEKAI</title>
+    <style>
+        
+        select:invalid { color: #BDBDBD; }
+        body
+        {
+        display: flex;
+        justify-content: center;
+        }
+        *
+        {
+        margin: 0px 0px 0px 0px;
+        padding: 0px 0px 0px 0px;
+        font-family: 'Inter';
+        font-weight: 700;
+        font-size: 20px;
+        }
+        *:focus {
+            outline: none;
+        }
+        input {
+        border-top-style: hidden;
+        border-right-style: hidden;
+        border-left-style: hidden;
+        border-bottom-style: hidden;
+        background-color: #eee;
+        }
+        .sayfa
+        {
+            width: auto;
+            justify-content: center;
+        }
+        .textbox
+        {
+        display: block;
+        width: 322px;
+        height: 78px;
+        margin-top: 20px;
+        background: #FFFFFF;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 23px;
+        outline: none;
+        padding-left: 30px; 
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 24px;
+        color: #000000;
+        }
+        .textbox::-webkit-input-placeholder {
+        color: #BDBDBD;}
+        .button
+        {
+            width: 173px;
+            height: 74px;
+            background: #F2F2F2;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 23px;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 24px;
+            color: #000000;
+            margin-top: 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .grey_box
+        {
+        width: 355px;
+        height: 90px;
+        background: #F2F2F2;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 23px;
+        position: relative;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 24px;
+        color: black;
+        margin-top: 25px;
+        cursor: pointer;
+        }
+        .box_in_1
+        {
+        width: 25%;
+        display: inline-block;
+        height: 100%;
+        position: relative;
+        }
+        .box_in_2
+        {
+        width: 40%;
+        display: inline-block;
+        border-right: 1px solid #E0E0E0;
+        border-left: 1px solid #E0E0E0;
+        height: 100%;
+        position: relative;
+        }
+        .box_in_3
+        {
+        width: 20%;
+        display: inline-block;
+        height: 100%;
+        position: relative;
+        }
+   
+
+        .box_in_text
+        {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        white-space: nowrap;
+        }
+        .sol_alt_button
+        {
+        width: 99px;
+        height: 70px;
+        background: #F2F2F2;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 23px;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 24px;
+        position: fixed;
+        left: 20px;
+        bottom: 20px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+        .sag_alt_button
+        {
+        width: 120px;
+        height: 70px;
+        background: #F2F2F2;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 23px;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 24px;
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+        select:-moz-focusring {
+        color: transparent;
+        text-shadow: 0 0 0 #000;
+        }
+        .detay_kutu
+        {
+        text-align: left;
+        background: #78C43F;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 23px;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 24px;
+        height: auto;
+        padding-top: 1px;
+        padding-left: 20px;
+        padding-bottom: 10px;
+        margin-top: 10px;
+        }
+
+
+    </style>
+</head>
+<body onload="startup()"><center>
+<div id="sayfa1" class="sayfa">
+    <img width="300px" src="logoo.jpg"/>
+    <input type="text" class="textbox" placeholder="TC Kimlik Numarası" id="username"/>
+    <input type="password" class="textbox" placeholder="Şifre" id="password"/>
+    <div class="button" onclick="login_click()">Giriş Yap</div>
+</div>
+
+
+<div id="sayfa2">
+<div class="grey_box">
+<div id="kurum_tipi" class="box_in_text">Kurum Tipi </div>
+</div>
+<div style="margin-top: 30px;">Sizden istenen hizmetler</div>
+<div id="sizden_istenen_hizmetler">
+</div>
+<div class="sol_alt_button" onclick="sayfa5_yukle()"><img width="32px" src="loading.png"\></div>
+</div>
+
+<div id="sayfa3">
+<div class="grey_box">
+<div id="sorgulanan_kurum_tipi" class="box_in_text">Kurum Tipi </div>
+</div>
+<div style="margin-top: 20px;" id="sorgulanan_tarih">fsdffsdf</div>
+<div class="detay_kutu" id="detay_kutu">
+<div style="margin-top: 20px; width: 300px;" id="sorgulanan_aciklama">dasfdsdf fsadf fsdfsd f f fdsfsdf  fsdfffffffffffffffff</div>
+<div style="margin-top: 50px;" id="sorgulanan_telno">fsdffsdf</div>
+<div style="margin-top: 50px;" id="sorgulanan_durum">fsdffsdf</div>
+
+<div>Verilen koordinatlar:</div>
+<div style="margin-top: 1px;" onclick="konum_ac();" style="cursor: pointer; color: blue;" id="sorgulanan_koordinat">fsdffsdf</div>
+<div style="margin-top: 50px;" id="sorgulanan_onem_sirası">fsdffsdf</div>
+<div class="sol_alt_button" id="sayfa2donus" onclick="sayfa2_yukle()">Geri</div>
+<div class="sol_alt_button" id="sayfa5donus" onclick="sayfa5_yukle()">Geri</div>
+<div class="sag_alt_button" id="kabulyadatamamla" onclick="kabul_yada_tamamla_click()">afsasdfsdf</div>
+<div style="display: none;" id="sorgulanan_id"></div>
+</div>
+</div>
+
+<div id="sayfa5">
+<div class="grey_box">
+<div id="kurum_tipi_2" class="box_in_text">Kurum Tipi </div>
+</div>
+<div style="margin-top: 30px;">Talep ettiğiniz hizmetler</div>
+<div id="talep_edilen_hizmetler">
+</div>
+<div class="sol_alt_button" onclick="sayfa2_yukle()"><img width="32px" src="loading.png"\></div>
+<div class="sag_alt_button" style="font-weight: bold; font-size: 60;" onclick="sayfa6_yukle()">+</div>
+</div>
+
+<div id="sayfa6">
+
+<select style="border: none;" class="textbox" id="talep_kurum">
+<option value="" disabled selected>Talebin iletileceği kurum</option>
+</select>
+
+<select style="border: none;" class="textbox" id="aciliyet_select">
+    <option value="" disabled selected>Öncelik Durumu</option>
+    <option value="Kırmızı">Kırmızı</option>
+    <option value="Sarı">Sarı</option>
+    <option value="Yeşil">Yeşil</option>
+    </select>
+
+<input autocomplete="off" placeholder="Açıklama" id="aciklama" type="text" class="textbox"/>
+<input autocomplete="off" class="textbox" type="text" id="telno" placeholder="Yetkili Telefon Numarası"/>
+<div style="width: 300px;" class="button" onclick="navigator.geolocation.getCurrentPosition(konum_bilgisi_ekle, hata)">Konum bilgisi ekle</div>
+<div style="margin-top: 10px;" id="konum"></div>
+
+<div class="button" onclick="talep_gonder()">Gönder</div>
+<div class="sol_alt_button" onclick="sayfa5_yukle()">Geri</div>
+</div>
+
+<div id="sample_list" style="display: none;" >
+    <div class="grey_box" id="sample_box" onclick="sorgula('listeid')">
+    <div class="box_in_1"><div class="box_in_text">saat</div></div>
+    <div class="box_in_2"><div class="box_in_text">isim</div></div>
+    <div class="box_in_3"><div class="box_in_text">olay</div></div>
+    </div>
+</div>
+
+
+</center>
+
+
+</body>
+<script>
+
+sayfaya_gec("0");
+async function startup()
+{
+    var kurumtipi = await req("/api/kurum_tip_getir.php");
+    if(kurumtipi != "")
+    {
+        sayfa2_yukle();
+    }
+    else
+    {
+        sayfaya_gec("sayfa1");
+    }
+
+}
+async function talep_gonder()
+{
+    var istenenkurum=document.getElementById("talep_kurum").value;
+    var aciklama = document.getElementById("aciklama").value;
+    var telno = document.getElementById("telno").value;
+    var aciliyet = document.getElementById("aciliyet_select").value;
+    var konum = document.getElementById("konum").innerHTML;
+    await req("/api/ilan_ekle.php?istenenkurum="+istenenkurum+"&aciklama="+aciklama+"&telno="+telno+"&aciliyet="+aciliyet+"&konum="+konum);
+    sayfa5_yukle();
+}
+
+function konum_bilgisi_ekle(pos)
+{
+    document.getElementById('konum').innerHTML = pos.coords.latitude +","+pos.coords.longitude;
+
+}
+function hata(hata){alert("hata");}
+async function sayfa6_yukle()
+{
+    document.getElementById("talep_kurum").value="";
+    document.getElementById("aciklama").value="";
+    document.getElementById("telno").value="";
+    document.getElementById("aciliyet_select").value="";
+    document.getElementById("konum").innerHTML="";
+    document.getElementById("konum").innerHTML="";
+    sayfaya_gec("sayfa6");
+    var opinons = '<option value="" disabled selected>Talebin iletileceği kurum</option>';
+    var kurumlar = JSON.parse(await req("/api/kurum_tipleri.php"));
+    for(var i= 0;i<kurumlar.length; i++)
+    {
+        opinons += '<option value="'+kurumlar[i]+'">'+kurumlar[i]+'</option>';
+    }
+    document.getElementById("talep_kurum").innerHTML=opinons;
+
+}
+async function sayfa5_yukle()
+{
+    sayfaya_gec("sayfa5");
+    document.getElementById("talep_edilen_hizmetler").innerHTML="";
+    document.getElementById("kurum_tipi_2").innerHTML = "Kurumunuzun Tipi: " + await req("/api/kurum_tip_getir.php");
+    var veri = JSON.parse(await req("/api/gorev_bilgi_getir.php"));
+    for(var i=0; i< veri.length; i++)
+    {
+        var sample = document.getElementById("sample_list").innerHTML;
+        sample= sample.replace("saat",veri[i][7].replaceAll(" ","<br>"));
+        sample = sample.replace("isim", veri[i][2].replaceAll(" ","<br>"));
+        sample = sample.replace("olay", veri[i][6] == "yeni"?'<img width="32px" src="/fire.png"/>':'<img width="32px" src="/progress.png"/>');
+        sample = sample.replace("listeid", veri[i][0].replaceAll(" ","<br>"));
+        document.getElementById("talep_edilen_hizmetler").innerHTML += sample;
+
+    }
+}
+
+
+
+async function kabul_yada_tamamla_click()
+{
+    if(document.getElementById("kabulyadatamamla").innerHTML=="Kabul Et")
+    {
+        await req("/api/ilan_kabul_et.php?id="+document.getElementById("sorgulanan_id").innerHTML);
+    }
+    else
+    {
+        await req("/api/ilan_sil.php?id="+document.getElementById("sorgulanan_id").innerHTML);
+    }
+    sayfa2_yukle();
+}
+
+
+async function sorgula(ilan_id)
+{
+sayfaya_gec("sayfa3");
+var obj = JSON.parse(await req("/api/ilan_detay_getir.php?id="+ilan_id));
+if(obj[0][1] !=  await req("/api/kurum_tip_getir.php"))
+{
+document.getElementById("sorgulanan_kurum_tipi").innerHTML = obj[0][1] +"'dan gelen Talep";
+document.getElementById("sorgulanan_tarih").innerHTML=obj[0][7];
+document.getElementById("sorgulanan_id").innerHTML=obj[0][0];
+document.getElementById("sorgulanan_aciklama").innerHTML="İlan Açıklaması: "+obj[0][3];
+document.getElementById("sorgulanan_telno").innerHTML="Yetkili Telefon numarası: <br>"+obj[0][4];
+document.getElementById("sorgulanan_durum").innerHTML="İlan durumu: "+ obj[0][6];
+document.getElementById("kabulyadatamamla").style.visibility="visible";
+document.getElementById("sayfa2donus").style.visibility="visible";
+document.getElementById("sayfa5donus").style.visibility="hidden";
+document.getElementById("sorgulanan_koordinat").innerHTML=  obj[0][8];
+document.getElementById("detay_kutu").style.backgroundColor= obj[0][5] == "Yeşil" ? "#78C43F" : document.getElementById("detay_kutu").style.backgroundColor;
+document.getElementById("detay_kutu").style.backgroundColor= obj[0][5] == "Kırmızı" ? "#CC4C1E" : document.getElementById("detay_kutu").style.backgroundColor;
+document.getElementById("detay_kutu").style.backgroundColor= obj[0][5] == "Sarı" ? "#CFC61C" : document.getElementById("detay_kutu").style.backgroundColor;
+document.getElementById("sorgulanan_onem_sirası").innerHTML= "Öncelik durumu: " +obj[0][5];
+document.getElementById("kabulyadatamamla").innerHTML= obj[0][6] == "yeni" ? "Kabul Et":"Tamamlandı";
+}
+else
+{
+document.getElementById("sorgulanan_kurum_tipi").innerHTML = obj[0][2] +"'a ettiğiniz Talep";
+document.getElementById("sorgulanan_tarih").innerHTML=obj[0][7];
+document.getElementById("sorgulanan_id").innerHTML=obj[0][0];
+document.getElementById("sorgulanan_aciklama").innerHTML="İlan Açıklaması: "+obj[0][3];
+document.getElementById("sorgulanan_telno").innerHTML="Yetkili Telefon numarası: "+obj[0][4];
+document.getElementById("sorgulanan_durum").innerHTML="İlan durumu: "+ obj[0][6];
+document.getElementById("sayfa2donus").style.visibility="hidden";
+document.getElementById("sayfa5donus").style.visibility="visible";
+document.getElementById("kabulyadatamamla").style.visibility="hidden";
+document.getElementById("sorgulanan_onem_sirası").innerHTML= "Öncelik durumu: " +obj[0][5];
+document.getElementById("detay_kutu").style.backgroundColor= obj[0][5] == "Yeşil" ? "#78C43F" : document.getElementById("detay_kutu").style.backgroundColor;
+document.getElementById("detay_kutu").style.backgroundColor= obj[0][5] == "Kırmızı" ? "#CC4C1E" : document.getElementById("detay_kutu").style.backgroundColor;
+document.getElementById("detay_kutu").style.backgroundColor= obj[0][5] == "Sarı" ? "#CFC61C" : document.getElementById("detay_kutu").style.backgroundColor;
+document.getElementById("sorgulanan_koordinat").innerHTML=  obj[0][8];
+}
+
+}
+
+async function login_click()
+{
+    var cevap = await req("/api/login.php?username="+document.getElementById("username").value+"&password="+document.getElementById("password").value);
+    if(cevap == "ok")
+    {
+        sayfaya_gec("sayfa2");
+        sayfa2_yukle();
+    }
+    else
+    {
+        alert("Tc kimlik veya şifre yanlış");
+    }
+}
+function konum_ac()
+{
+    window.open("https://www.google.com/maps?output=embed&q="+document.getElementById("sorgulanan_koordinat").innerHTML, "_blank");
+}
+async function sayfa2_yukle()
+{
+    sayfaya_gec("sayfa2");
+    document.getElementById("sizden_istenen_hizmetler").innerHTML="";
+    document.getElementById("kurum_tipi").innerHTML = "Kurumunuzun Tipi: " + await req("/api/kurum_tip_getir.php");
+    var veri = JSON.parse(await req("/api/ilan_bilgi_getir.php"));
+    for(var i=0; i< veri.length; i++)
+    {
+        var sample = document.getElementById("sample_list").innerHTML;
+        sample= sample.replace("saat",veri[i][7].replaceAll(" ","<br>"));
+        sample = sample.replace("isim", veri[i][1].replaceAll(" ","<br>"));
+        sample = sample.replace("olay", veri[i][6] == "yeni"?'<img width="32px" src="/fire.png"/>':'<img width="32px" src="/progress.png"/>');
+        sample = sample.replace("listeid", veri[i][0].replaceAll(" ","<br>"));
+        document.getElementById("sizden_istenen_hizmetler").innerHTML += sample;
+
+    }
+}
+
+
+
+async function req(url) {
+    const Http = new XMLHttpRequest();
+    Http.open('GET', url);
+    Http.send(null);
+    if (Http.readyState === XMLHttpRequest.DONE) {
+        return Http.responseText;
+    }
+    let res;
+    const p = new Promise((r) => res = r);
+    Http.onreadystatechange = () => {
+        if (Http.readyState === XMLHttpRequest.DONE) {
+            res(Http.responseText);
+        }
+    }
+    return p;
+}
+function sayfaya_gec(sayfa)
+{
+document.getElementById("sayfa1").style.display ="none";
+document.getElementById("sayfa2").style.display ="none";
+document.getElementById("sayfa3").style.display ="none";
+document.getElementById("sayfa5").style.display ="none";
+document.getElementById("sayfa6").style.display ="none";
+document.getElementById(sayfa).style.display ="block";
+}
+</script>
+</html>
